@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cursos - Portafolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Numython</h1>
+    <!-- <p>Lista de Cursos</p> -->
+</header>
+
+<div class="container">
+    
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterCursos('all', this)">Todos</button>
+        <button class="filter-btn" onclick="filterCursos('python', this)">Python</button>
+        <button class="filter-btn" onclick="filterCursos('ingeniería', this)">Ingeniería</button>
+        <button class="filter-btn" onclick="filterCursos('robótica', this)">Robótica</button>
+        <button class="filter-btn" onclick="filterCursos('matemáticas', this)">Matemáticas</button>
+    </div>
+
+    <div class="courses-grid" id="coursesGrid">
+        
+        <div class="course-card" data-topics="ingeniería matemáticas">
+            <div class="course-content">
+                <span class="platform-badge udemy">Udemy</span>
+                <h3>Estática: fundamentos de equilibrio y análisis estructural</h3>
+                <div class="tags-container">
+                    <span class="tag">Ingeniería</span>
+                </div>
+                <p>Comprende los principios fundamentales de la estática y su aplicación en el análisis estructural.</p>
+            </div>
+            <a href="#" class="btn">Ver en Udemy</a>
+        </div>
+
+        <div class="course-card" data-topics="matemáticas python">
+            <div class="course-content">
+                <span class="platform-badge udemy">Udemy</span>
+                <h3>Matemáticas con Sympy</h3>
+                <div class="tags-container">
+                    <span class="tag">Python</span>
+                    <span class="tag">Sympy</span>
+                    <span class="tag">Matemáticas</span>
+                </div>
+                <p>Aprende a utilizar SymPy para resolver problemas matemáticos de forma simbólica.</p>
+            </div>
+            <a href="#" class="btn">Ir al Curso</a>
+        </div>
+
+        <div class="course-card" data-topics="backend js">
+            <div class="course-content">
+                <span class="platform-badge udemy">Udemy</span>
+                <h3>Node.js y MongoDB</h3>
+                <div class="tags-container">
+                    <span class="tag">Backend</span>
+                    <span class="tag">JS</span>
+                </div>
+                <p>Crea servidores escalables y gestiona bases de datos NoSQL.</p>
+            </div>
+            <a href="#" class="btn">Ir al Curso</a>
+        </div>
+
+        <div class="course-card" data-topics="diseño">
+            <div class="course-content">
+                <span class="platform-badge youtube">YouTube</span>
+                <h3>Fundamentos de UI/UX</h3>
+                <div class="tags-container">
+                    <span class="tag">Diseño</span>
+                </div>
+                <p>Principios visuales para crear interfaces que los usuarios amen.</p>
+            </div>
+            <a href="#" class="btn">Ver en YouTube</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function filterCursos(topic, btnElement) {
+        // 1. Manejar estado visual de los botones
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+
+        // 2. Filtrar las tarjetas
+        const cards = document.querySelectorAll('.course-card');
+        
+        cards.forEach(card => {
+            const cardTopics = card.getAttribute('data-topics').split(' '); // Convertimos el string en array
+            
+            if (topic === 'all' || cardTopics.includes(topic)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
